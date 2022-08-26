@@ -52,4 +52,5 @@ table {
 
 .healthbar { 
     position: absolute;
+    z-index: 10;
 }
