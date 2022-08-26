@@ -13,10 +13,12 @@
     <img class="background" onmousemove="getMousePos()" src="9PyNAMX (1).jpeg" width="100%" height="100%">
     
 <script>
+    let gun = document.querySelector(".gun");
+
     function getMousePos() {
         mousePosX = event.clientX;
         console.log(mousePosX)
-    
+        gun.style.left = mousePosX = "px";
     }
 
 </script>
