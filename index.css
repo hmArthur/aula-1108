@@ -52,6 +52,6 @@ table {
 
 .healthbar { 
     position: absolute;
-    top: 90%;
+    top: 80%;
     z-index: 10;
 }
