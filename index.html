@@ -14,16 +14,13 @@
     
 <script>
 
-    function getMousePos() {
+    window.addEventListener('mousemove', function(e) {
         const gun = document.querySelector(".gun");
-        mousePosX = event.clientX;
+        mousePosX = e.clientX;
         console.log(mousePosX)
-        
-        while (0 == 0) {
-            mousePosX = event.clientX;
-            gun.style.left = mousePosX + 'px'
-        }
-    }
+        gun.style.left = mousePosX + 'px'
+
+    });
 
 </script>
 </body>
