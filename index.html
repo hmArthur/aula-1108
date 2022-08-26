@@ -10,12 +10,18 @@
 <body>
     <img class="healthbar" src="StatusBar.png" width="100%">
     <img class="gun" src="ELjD-8gWoAEIxGR.png" width="200px">
-    <img class="background" onmouseover="getMousePos()" src="9PyNAMX (1).jpeg" width="100%" height="100%">
+    <img class="background" onload="iniciarMousePos()" src="9PyNAMX (1).jpeg" width="100%" height="100%">
     
 <script>
     function getMousePos() {
         mousePosX = event.clientX;
         console.log(mousePosX)
+        Window.setInterval("iniciarMousePos()",10);
+    }
+
+
+    function iniciarMousePos() {
+        window.setInterval("getMousePos()",10);
     }
 </script>
 </body>
