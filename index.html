@@ -19,7 +19,10 @@
         mousePosX = event.clientX;
         console.log(mousePosX)
         
-        while (0 == 0) gun.style.left = mousePosX + 'px';
+        while (0 == 0) {
+            mousePosX = event.clientX;
+            gun.style.left = mousePosX + 'px'
+        }
     }
 
 </script>
