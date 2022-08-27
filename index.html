@@ -7,21 +7,77 @@
     <link href="index.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body >
+<body>
+    <div class="enemys"> 
+
+    </div>
+    <img class="gun" id="gun" src="ZWdz.gif" width="600px">
+    <div class="gunhitbox" width="200px" height="519px" style="position: absolute; top: 0%;"></div>
     <img class="healthbar" src="StatusBar.png" width="100%">
-    <img class="gun" src="ELjD-8gWoAEIxGR.png" width="200px">
+
     <img class="background"  src="9PyNAMX (1).jpeg" width="100%" height="100%">
     
 <script>
+
+    (()=> {
+        let oldNumber = 0;
+        function SpawnEnemy(){
+            console.log("pog")
+            var imgNova = document.createElement("img");
+            imgNova.classList.add("enemy");
+            imgNova.src = "InferiorPreciousFinch-size_restricted.gif";
+            const number = (Math.floor(Math.random() * 801) + 100);
+
+            oldNumber = number;
+            imgNova.style.left = number + "px";
+            
+            
+            document.body.insertBefore(imgNova, document.querySelector(".gun"));
+
+        }
+
+        setInterval(SpawnEnemy, 1500);
+
+        
+    })();
 
     window.addEventListener('mousemove', function(e) {
         const gun = document.querySelector(".gun");
         mousePosX = e.clientX;
         console.log(mousePosX)
-        gun.style.left = mousePosX + 'px'
+        gun.style.left = mousePosX + 'px';
+        document.querySelector('.gunhitbox').style.left = (mousePosX+270) + 'px'; 
 
+        function getBelowElements(el) {
+            const sourceBounding = el.getBoundingClientRect();
+            let belowElements = [];
+
+            for (const currentElement of document.all) {
+                const targetBounding = currentElement.getBoundingClientRect();
+
+                // Se todas as condições forem falsas, é porque está tendo uma sobreposição
+                if (!(sourceBounding.right < targetBounding.left ||
+                    sourceBounding.left > targetBounding.right ||
+                    sourceBounding.bottom < targetBounding.top ||
+                    sourceBounding.top > targetBounding.bottom)) {
+                    belowElements = [...belowElements, currentElement];
+                    belowElements.forEach(element => {
+                        if(element.classList == "enemy") {
+                            setTimeout(function(){
+                                element.remove();
+                            }, 350);    
+                        }
+                    }); // Adiciona o elemento atual ao array de elementos sobrepostos
+                }
+            }
+
+            return belowElements; // Retorna o array de elementos sobrepostos
+        }
+
+        console.log(getBelowElements(document.getElementsByClassName("gunhitbox")[0]));
     });
 
+
+
 </script>
-</body>
 </html>
